@@ -4,7 +4,7 @@
 cp -r configs/.[^.]* ~
 
 # symlink the /root directory to /home/root
-ln -s /root /home/root
+#ln -s /root /home/root
 
 # update the system and upgrade all the packages
 apt update -y && apt upgrade -y
