@@ -22,10 +22,11 @@ done
 
 # Backuping users files
 echo "Backuping users files"
-declare -a users=("root" "wordpress")
+declare -a users=("root" "/home/wordpress")
 
 # loop through the array and backup the home directories
 for user in "${users[@]}"; do
-	echo $user
-	rsync -av -e "ssh -i $SSH_KEY" /home/$user/ backups@194.164.60.10:$BACKUP
+	# see https://stackoverflow.com/a/3294102/12935487
+	echo ${user##*/}
+	rsync -av -e "ssh -i $SSH_KEY" $user backups@194.164.60.10:$BACKUP/$user
 done
