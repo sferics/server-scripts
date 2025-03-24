@@ -111,3 +111,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# add fuck alias
+eval $(thefuck --alias)
+
+# add latest cargo to path
+. "$HOME/.cargo/env"

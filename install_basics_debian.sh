@@ -1,13 +1,16 @@
 # a bash script which does initial setup and installs the basics on a debian system
 
+# copy config files to home
+cp -r configs/.[^.]* ~
+
 # symlink the /root directory to /home/root
 ln -s /root /home/root
 
 # update the system and upgrade all the packages
 apt update -y && apt upgrade -y
 
-# install the locales package and zsh
-apt-get install locales-all zsh
+# install the locales package
+apt-get install locales-all
 
 # skip the locale check by creating a file
 touch /var/lib/cloud/instance/locale-check.skip
@@ -33,14 +36,8 @@ export LC_MESSAGES="en_US.UTF-8"
 
 
 # install all basic packages with apt in one single command
-apt install cron git duf fzf ripgrep htop curl fail2ban php8.2 php8.2-zip php-json php8.2-cli php8.2-common php8.2-imap php8.2-redis php8.2-snmp php8.2-xml php8.2-mysql php8.2-zip php8.2-mbstring php8.2-curl libapache2-mod-php mariadb-server ufw rsync gh php exa bat lsd ranger mc python3-pip python3-venv virtualenv cargo libaugeas0 tmux fd-find php8.2-imagick php8.2-intl php8.2-gd phpmyadmin -y
+apt install thefuck cron git duf fzf ripgrep htop curl fail2ban php8.2 php8.2-zip php-json php8.2-cli php8.2-common php8.2-imap php8.2-redis php8.2-snmp php8.2-xml php8.2-mysql php8.2-zip php8.2-mbstring php8.2-curl libapache2-mod-php mariadb-server ufw rsync gh php exa bat lsd ranger mc python3-pip python3-venv virtualenv cargo libaugeas0 tmux fd-find php8.2-imagick php8.2-intl php8.2-gd phpmyadmin -y
 
-
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# set the default shell to zsh
-chsh -s $(which zsh)
 
 # configure the firewall
 # allow ssh, http, https, and mysql
@@ -121,9 +118,5 @@ deactivate
 # prepare the certbot command
 sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
 
-# install thefuck (a tool to correct your previous console command)
-apt install thefuck -y
-# add thefuck to the bash aliases
-echo "eval $(thefuck --alias)" >> ~/.bashrc
-# add thefuck to the zsh plugins
-sed -i 's/plugins=(git)/plugins=(git thefuck)/g' ~/.zshrc
+# install Z-shell (with oh-my-zsh) and set it to default
+bash install_zsh.sh

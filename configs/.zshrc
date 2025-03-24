@@ -136,14 +136,13 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 eval 
 eval 
 
-. "$HOME/.cargo/env"
+# add latest cargo to path
+source "$HOME/.cargo/env"
 
 # source .bash_aliases if it exists
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
-
-alias zf="z | fzf"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
