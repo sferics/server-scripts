@@ -118,5 +118,8 @@ deactivate
 # prepare the certbot command
 sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
 
+# install Github Copilot
+git clone https://github.com/github/copilot.vim.git ~/.vim/pack/github/start/copilot.vim
+
 # install Z-shell (with oh-my-zsh) and set it to default
 bash install_zsh.sh
