@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Backup server
-BACKUP=/home/backups/metz
+BACKUP=/home/backups
 SSH_KEY="~/.ssh/backup"
 
 # Config files
@@ -32,4 +32,13 @@ for user in "${users[@]}"; do
 	# see https://stackoverflow.com/a/3294102/12935487
 	echo ${user##*/}
 	rsync -av -e "ssh -i $SSH_KEY" $user/* backups@194.164.60.10:$BACKUP/${user##*/}
+done
+
+# Backuping log files
+# echo "Backuping log files"
+declare -a logs=("/home/wordpress/log" "/var/log")
+
+# loop through the array and backup the log files
+for log in "${logs[@]}"; do
+	rsync -av -e "ssh -i $SSH_KEY" $logs/* backups@194.164.60.10:$BACKUP/log
 done
