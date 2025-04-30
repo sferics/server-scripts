@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a sites=("metz")
+declare -a sites=("metz metz-test metz-live")
 
 for site in "${sites[@]}"; do
 	

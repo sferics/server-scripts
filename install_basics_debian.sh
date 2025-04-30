@@ -36,7 +36,7 @@ export LC_MESSAGES="en_US.UTF-8"
 
 
 # install all basic packages with apt in one single command
-apt install nginx varnish php-mail php8.2-xml php-xml php-pear php-cgi php8.2-cgi php-fpm php8.2-fpm thefuck cron git duf fzf ripgrep htop curl fail2ban php8.2 php8.2-zip php-json php8.2-cli php8.2-common php8.2-imap php8.2-redis php8.2-snmp php8.2-xml php8.2-mysql php8.2-zip php8.2-mbstring php8.2-curl libapache2-mod-php mariadb-server ufw rsync gh php exa bat lsd ranger mc python3-pip python3-venv virtualenv cargo libaugeas0 tmux fd-find php8.2-imagick php8.2-intl php8.2-gd phpmyadmin -y
+apt install nginx varnish redis php-redis php-mail php8.2-xml php-xml php-pear php-cgi php8.2-cgi php-fpm php8.2-fpm thefuck cron git duf fzf ripgrep htop curl fail2ban php8.2 php8.2-zip php-json php8.2-cli php8.2-common php8.2-imap php8.2-redis php8.2-snmp php8.2-xml php8.2-mysql php8.2-zip php8.2-mbstring php8.2-curl libapache2-mod-php mariadb-server ufw rsync gh php exa bat lsd ranger mc python3-pip python3-venv virtualenv cargo libaugeas0 tmux fd-find php8.2-imagick php8.2-intl php8.2-gd phpmyadmin -y
 
 
 # configure the firewall

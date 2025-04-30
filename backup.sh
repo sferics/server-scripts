@@ -10,10 +10,12 @@ nginx=/etc/nginx
 phpmyadmin=/etc/phpmyadmin
 php=/etc/php
 mysql=/etc/mysql
+varnish=/etc/varnish
+redis=/etc/redis
 
 # Backuping config files
 echo "Backuping config files"
-declare -a configs=($phpmyadmin $php $mysql $apache2 $nginx)
+declare -a configs=($phpmyadmin $php $mysql $apache2 $nginx $varnish $redis)
 
 # loop through the array and backup the files in the directories
 for dir in "${configs[@]}"; do
