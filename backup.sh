@@ -12,10 +12,12 @@ php=/etc/php
 mysql=/etc/mysql
 varnish=/etc/varnish
 redis=/etc/redis
+ufw=/etc/ufw
+fail2ban=/etc/fail2ban
 
 # Backuping config files
 echo "Backuping config files"
-declare -a configs=($phpmyadmin $php $mysql $apache2 $nginx $varnish $redis)
+declare -a configs=($phpmyadmin $php $mysql $apache2 $nginx $varnish $redis $ufw $fail2ban)
 
 # loop through the array and backup the files in the directories
 for dir in "${configs[@]}"; do
@@ -40,5 +42,6 @@ declare -a logs=("/home/wordpress/log" "/var/log")
 
 # loop through the array and backup the log files
 for log in "${logs[@]}"; do
+	echo $log
 	rsync -av -e "ssh -i $SSH_KEY" $logs/* backups@194.164.60.10:$BACKUP/log
 done
